@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Registration App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e4e014de;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: grid;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Course Registration</h1>
+
+  <div class="container">
+    <form id="courseForm">
+      <div>
+        <label for="name">Course Name:</label><br>
+        <input type="text" id="name" required>
+      </div>
+      <div>
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" required>
+      </div>
+      <div>
+        <label for="duration">Duration (in days):</label><br>
+        <input type="number" id="duration" required>
+      </div>
+      <button type="submit">Register Course</button>
+    </form>
+
+    <h2>Registered Courses</h2>
+    <table id="courseTable">
+      <thead>
+        <tr>
+          <th>Course Name</th>
+          <th>Date</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Course entries will go here -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById('courseForm');
+    const tableBody = document.getElementById('courseTable').querySelector('tbody');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const date = document.getElementById('date').value;
+      const duration = document.getElementById('duration').value;
+
+      const newRow = tableBody.insertRow();
+      newRow.insertCell(0).textContent = name;
+      newRow.insertCell(1).textContent = date;
+      newRow.insertCell(2).textContent = `${duration} day(s)`;
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
